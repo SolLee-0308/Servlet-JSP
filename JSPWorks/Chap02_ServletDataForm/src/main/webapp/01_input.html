@@ -1,0 +1,51 @@
+<!-- 
+	<form> 태그 중 POST 방식
+	: 기본 HTML에서 데이터를 전달하는 방식은 form이 기본임 => 입력양식 자체를 의미함
+	  한번에 여러 개의 데이터를 묶어서 submit버튼 클릭시 전송됨
+	  action 속성 = 데이터를 처리할 곳을 지정
+	  method 속성 = GET/POST 데이터 방식 결정, 기본값은 GET임
+	  
+	쿼리 스트링(Query String)
+	: 특정한 주소(URL)에 포함된 추가적인 테이터
+	  a. GET방식의 경우  => ?뒤에 키(key)=value 쌍으로 구성
+	  				  => 동일한 키(key)는 중복이 가능함
+	  				  => 문자열로만 전송 가능
+	  b. POST방식의 경우 => (HTTP body)에 붙어서 데이터에 (통으로) 전송됨 // 겟 방식은 개수 제한이 있는데 바디는 XX
+	  		          => 문자열로만 전송 가능
+	 (참고) 서버단 프로그래밍시 쿼리 스트링의 키(key)들 : [parameter]라고 함 => 주소창으로 키, 밸류 쌍 넘기라는 의미
+	   
+	 
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="EUC-KR">
+	<title>Input폼 데이터 전송</title>
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="panel-body">
+		<!-- 처리 서블릿명 = InputServlet | 매핑명 = input | 데이터전송방식 get -->
+		<form action="input" method="get">
+			아이디 : <input type="text" name="user_id"> <br><br>
+			비밀번호 : <input type="password" name="user_pw"> <br><br>
+			
+			<input type="checkbox" name="subject" value="java"> 자바
+			<input type="checkbox" name="subject" value="servlet"> 서블릿
+			<input type="checkbox" name="subject" value="jsp"> JSP
+			<input type="checkbox" name="subject" value="oracle"> Oracle
+			<input type="checkbox" name="subject" value="react"> React
+			<br><br>
+			<input type="submit" value="로그인">
+			<input type="reset" value="다시입력">
+		</form>
+	</div>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+	<title>폼 hidden 데이터 전송</title>
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="panner-heading">
+	<h1>로그인</h1>
+	</div>
+	<div class="panner-body">
+	<form action="loginhiddenservlet" method="post" novalidate>
+		<table class="table">
+			<tr>
+				<td>아이디 : </td>
+				<td><input type="text" name="user_id" size="30"></td>
+			</tr>
+			<tr>
+				<td>패스워드 : </td>
+				<td><input type="password" name="user_pw" size="30"></td>
+			</tr>
+			
+			<!-- hidden값 넣기 -->
+			
+			<tr>
+				<td>사는 곳 : </td>
+				<td><input type="hidden" name="address" value="서울시 성동구"></td>
+			</tr>
+			<tr>
+				<td>이메일 주소 : </td>
+				<td><input type="hidden" name="email" value="indopop@naver.com"></td>
+			</tr>
+			<tr>
+				<td>전화번호 : </td>
+				<td><input type="hidden" name="tel" value="010-1234-5678"></td>
+			</tr>
+			<tr>
+               <td colspan="2">
+                    <input type="submit" value="로그인">
+                    <input type="reset" value="취소">
+               </td>
+            </tr>
+		</table>
+	</form>
+	</div>
+</body>
+
+</html>
