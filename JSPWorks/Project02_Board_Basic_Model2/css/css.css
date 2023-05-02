@@ -1,0 +1,33 @@
+@charset "utf-8";
+body, html {
+    font-size: 62.5%;
+}
+#wrap {
+    width: 80%;
+    margin: 0 auto;
+    padding: 32px;
+    text-align: center;
+    font-size: 1.6rem;
+}
+#wrap h1 {
+    margin-bottom: 32px;
+    font-size: 3rem;
+    font-weight: 500;
+}
+header>div {
+    margin-bottom: 16px;
+}
+aside>button {
+	width: 100px !important;
+	height: 40px !important;
+	background: orange !important;
+}
+#wrap {
+	position: relative;
+}
+#wrap>aside {
+	position: absolute;
+	right: 1%;
+	left: 80%;
+	z-index: 1;
+}
