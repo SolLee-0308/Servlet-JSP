@@ -1,0 +1,64 @@
+package binding02;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+   Binding
+   : 전달하는 데이터의 양이 적을 때 GET 방식으로 편리하게 전달 가능
+     => but, GET은 데이터 전달시 문제점이 있음 (= 보안, 적은 데이터 용량)
+     
+   웹 프로그램 실행시에 데이터(자원)를 [서블린 관련 객체]에 저장하는 방법이 나옴
+   : HttpServletRequest, HttpSession, ServletContext 객체를 통해 사용함 => range 생각하면 됨 > 왼쪽에 나열 순서는 범위가 적은 애들 순서대로
+     => 요청은 한 번뿐이니까 당연히 범위가 작겠지
+     => 저장된 데이터(자원)는 서블릿이나 JSP에서 서로 전달하고 공유하며 사용
+ */
+/*
+    GET
+      a. 서블릿에 데이터 전송시 데이터가 URL뒤 속성명=속성값 형태로 전송 => 주소값과 붙어서 전송
+      b. 여러 데이터 전송시 &로 구분
+      c. 보안에 취약
+      d. 최대 255자
+      e. 기존 데이터 전송방식
+      f. 웹브라우저에 직접 입력 전송 가능
+      g. 서블릿에서 doGet()이용해 데이터 처리
+      
+    POST
+      a. 서블릿에 데이터 전송시 데이터가 body 영역에 숨겨진 채 전송
+      b. 보안에 유리
+      c. 전송 데이터 용량 제한 없음
+      d. 속도가 약간 느림 = 전송시 서블릿에서 다시 한 번 가져오는 작업을 함
+      e. 서블릿에서 doPost() 이용해 데이터 처리
+*/
+@WebServlet("/bindingredirect")
+public class Servlet01Redirect extends HttpServlet {
+   private static final long serialVersionUID = 1L;
+
+
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGetPost(request, response);
+   }
+
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGetPost(request, response);
+
+   }
+   
+   protected void doGetPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.setCharacterEncoding("utf-8");
+      response.setContentType("text/html; charset=utf-8");
+      
+      // request 객체에 저장
+      // 1. 웹브라우저에서 요청한 request객체에 해당값을 바인딩
+      request.setAttribute("name", "SOL LEE"); // object는 모든 게 다 올 수 있다는 의미
+      // 2. 두번재 서블릿으로 전달 = 웹 브라우저를 통해서 처리 => 왜? redirect이기 떄문에
+      response.sendRedirect("bindingredirect2");
+      
+      
+   }
+
+}
